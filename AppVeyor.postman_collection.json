@@ -1,0 +1,107 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AppVeyor",
+		"_postman_id": "d05d3dc7-6e29-72bd-edf4-5de74293cb1f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teams (Users, Roles, Collaborators)",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Projects and Builds",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Projects",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Settings",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/settings",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-settings"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#update-project"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project Build Cache",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/buildcache",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#delete-project-build-cache"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Environments and Deployments",
+			"description": "",
+			"item": []
+		}
+	]
+}
