@@ -117,7 +117,109 @@
 		{
 			"name": "Collaborators",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Get Collaborators",
+					"request": {
+						"url": "https://ci.appveyor.com/api/collaborators",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-collaborators"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collaborator",
+					"request": {
+						"url": "https://ci.appveyor.com/api/collaborators/<userId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-collaborator"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Collaborator",
+					"request": {
+						"url": "https://ci.appveyor.com/api/collaborators",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"john@smith.com\",\r\n   \"roleId\":3040\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#add-collaborator"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Collaborator",
+					"request": {
+						"url": "https://ci.appveyor.com/api/collaborators",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"userId\":2018,\r\n   \"roleId\":3040\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#update-collaborator"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Collaborator",
+					"request": {
+						"url": "https://ci.appveyor.com/api/collaborators/<userId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#delete-collaborator"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Roles",
