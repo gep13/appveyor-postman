@@ -577,9 +577,159 @@
 			]
 		},
 		{
-			"name": "Environments and Deployments",
+			"name": "Environments",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Get Environment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#get-environments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Environment Settings",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments/<deploymentEnvironmentId>/settings",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#get-environment-settings"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Environment Deployments",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments/<deploymentEnvironmentId>/deployments",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#get-environment-deployments"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Environment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"production\",\r\n   \"provider\":\"FTP\",\r\n   \"settings\":{\r\n      \"providerSettings\":[\r\n         {\r\n            \"name\":\"server\",\r\n            \"value\":{\r\n               \"value\":\"ftp.myserver.com\",\r\n               \"isEncrypted\":false\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"username\",\r\n            \"value\":{\r\n               \"value\":\"ftp-user\",\r\n               \"isEncrypted\":false\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"password\",\r\n            \"value\":{\r\n               \"value\":\"password\",\r\n               \"isEncrypted\":true\r\n            }\r\n         }\r\n      ],\r\n      \"environmentVariables\":[\r\n         {\r\n            \"name\":\"my-var\",\r\n            \"value\":{\r\n               \"value\":\"123\",\r\n               \"isEncrypted\":false\r\n            }\r\n         }\r\n      ]\r\n   }\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#add-environment"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Environment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"deploymentEnvironmentId\":3018,\r\n   \"name\":\"production\",\r\n   \"environmentAccessKey\":\"gi3ttevuk7123\",\r\n   \"settings\":{\r\n      \"providerSettings\":[\r\n         {\r\n            \"name\":\"server\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"ftp.myserver.com\"\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"username\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"ftp-user\"\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"password\",\r\n            \"value\":{\r\n               \"isEncrypted\":true,\r\n               \"value\":\"password\"\r\n            }\r\n         }\r\n      ],\r\n      \"environmentVariables\":[\r\n         {\r\n            \"name\":\"my-var\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"123\"\r\n            }\r\n         }\r\n      ],\r\n      \"provider\":\"FTP\"\r\n   }\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#update-environment"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Environment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/environments/<deploymentEnvironmentId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"deploymentEnvironmentId\":24904,\r\n   \"name\":\"production\",\r\n   \"environmentAccessKey\":\"gi3ttevuk7123\",\r\n   \"settings\":{\r\n      \"providerSettings\":[\r\n         {\r\n            \"name\":\"server\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"ftp.myserver.com\"\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"username\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"ftp-user\"\r\n            }\r\n         },\r\n         {\r\n            \"name\":\"password\",\r\n            \"value\":{\r\n               \"isEncrypted\":true,\r\n               \"value\":\"password\"\r\n            }\r\n         }\r\n      ],\r\n      \"environmentVariables\":[\r\n         {\r\n            \"name\":\"my-var\",\r\n            \"value\":{\r\n               \"isEncrypted\":false,\r\n               \"value\":\"123\"\r\n            }\r\n         }\r\n      ],\r\n      \"provider\":\"FTP\"\r\n   }\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#delete-environment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deployments",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Deployment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/deployments/<deploymentId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#get-deployment"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
