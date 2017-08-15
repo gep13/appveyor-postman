@@ -507,6 +507,31 @@
 					"response": []
 				},
 				{
+					"name": "Add Project",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"repositoryProvider\": \"gitHub\",\r\n   \"repositoryName\": \"FeodorFitsner/demo-app\"\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#add-project"
+					},
+					"response": []
+				},
+				{
 					"name": "Update Project",
 					"request": {
 						"url": "https://ci.appveyor.com/api/projects",
@@ -516,13 +541,68 @@
 								"key": "Authorization",
 								"value": "Bearer {{authenticationToken}}",
 								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"lots of stuff\": \"goes here\"\n}"
 						},
 						"description": "https://www.appveyor.com/docs/api/projects-builds/#update-project"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project Settings in YAML",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/settings/yaml",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "lotsOfStuff: goesHere"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#update-project-settings-in-yaml"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project Build Number",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/settings/build-number",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"nextBuildNumber\": 35 \n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#update-project-build-number"
 					},
 					"response": []
 				},
@@ -545,13 +625,131 @@
 						"description": "https://www.appveyor.com/docs/api/projects-builds/#delete-project-build-cache"
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/<projectSlug>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#delete-project"
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Builds",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Start Build Of Branch Most Recent Commit",
+					"request": {
+						"url": "https://ci.appveyor.com/api/builds",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountName\": \"your-account-name\",\r\n    \"projectSlug\": \"project-slug-from-url\",\r\n    \"branch\": \"master\",\r\n    \"environmentVariables\": {\r\n       \"my_var\": \"value\",\r\n       \"another_var\": \"another value\"\r\n    }\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#start-build-of-branch-most-recent-commit"
+					},
+					"response": []
+				},
+				{
+					"name": "Start Build Of Specific Branch Commit",
+					"request": {
+						"url": "https://ci.appveyor.com/api/builds",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountName\": \"your-account-name\",\r\n    \"projectSlug\": \"project-slug-from-url\",\r\n    \"branch\": \"develop\",\r\n    \"commitId\": \"3e9d9468\"\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#start-build-of-specific-branch-commit"
+					},
+					"response": []
+				},
+				{
+					"name": "Start Build Of Pull Request (GitHub Only)",
+					"request": {
+						"url": "https://ci.appveyor.com/api/builds",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountName\": \"your-account-name\",\r\n    \"projectSlug\": \"project-slug-from-url\",\r\n    \"pullRequestId\": 3\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#start-build-of-specific-branch-commit"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Build",
+					"request": {
+						"url": "https://ci.appveyor.com/api/builds/{{accountName}}/{{projectSlug}}/<buildVersion>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#cancel-build"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Build Jobs",
