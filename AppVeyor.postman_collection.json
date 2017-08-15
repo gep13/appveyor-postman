@@ -728,6 +728,56 @@
 						"description": "https://www.appveyor.com/docs/api/environments-deployments/#get-deployment"
 					},
 					"response": []
+				},
+				{
+					"name": "Start Deployment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/deployments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"environmentName\": \"environment-to-deploy\",\r\n  \"accountName\": \"your-account-name\",\r\n  \"projectSlug\": \"project-slug-from-url\",\r\n  \"buildVersion\": \"1.2.0\",\r\n  \"buildJobId\": \"sfke9239ydzf\",\r\n  \"environmentVariables\": {\r\n     \"server\": \"myserver.com\",\r\n     \"another_var\": \"another value\"\r\n  }\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#start-deployment"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Deployment",
+					"request": {
+						"url": "https://ci.appveyor.com/api/deployments/stop",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deploymentId\": 123\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/environments-deployments/#cancel-deployment"
+					},
+					"response": []
 				}
 			]
 		}
