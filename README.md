@@ -2,8 +2,6 @@
 
 This repository contains a [Postman](https://www.getpostman.com/) collection and environment file that can be used to exercise the [AppVeyor API](https://www.appveyor.com/docs/api/).
 
-Not all requests have been created yet, but they will be added over time.
-
 To get started with this collection and test that everything is working, after cloning this repository, follow these steps:
 
 1. Open Postman
@@ -25,8 +23,10 @@ To get started with this collection and test that everything is working, after c
       * The name of the account that hosts the AppVeyor project you want to work with
     * _projectSlug_
       * The identifier for the AppVeyor project you want to work with
-    * authenticationToken
+    * _authenticationToken_
       * The API Token of the user that you want to use to access the API.  Log into `ci.appveyor.com` and then select the drop down list at the top right hand corner and click `API Token`.
+    * _recordsPerPage_
+      * The number of records to return in historical queries
 
 1. Click Update
 1. Close the `Manage Environments` window
