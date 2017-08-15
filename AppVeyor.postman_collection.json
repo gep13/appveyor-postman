@@ -8,12 +8,234 @@
 	},
 	"item": [
 		{
-			"name": "Teams (Users, Roles, Collaborators)",
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"url": "https://ci.appveyor.com/api/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"url": "https://ci.appveyor.com/api/users/<userId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-user"
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"url": "https://ci.appveyor.com/api/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"fullName\":\"John Smith\",\r\n   \"email\":\"john@smith.com\",\r\n   \"roleId\":4,\r\n   \"generatePassword\":false,\r\n   \"password\":\"password\",\r\n   \"confirmPassword\":\"password\"\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#add-user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"url": "https://ci.appveyor.com/api/users",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"userId\":3019,\r\n   \"fullName\":\"John Smith\",\r\n   \"email\":\"john@smith.com\",\r\n   \"password\": null,\r\n   \"roleId\":4,\r\n   \"successfulBuildNotification\":\"all\",\r\n   \"failedBuildNotification\":\"all\",\r\n   \"successfulDeploymentNotification\":\"all\",\r\n   \"failedDeploymentNotification\":\"all\",\r\n   \"notifyWhenBuildStatusChangedOnly\":true\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#update-user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"url": "https://ci.appveyor.com/api/users/<userId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#delete-user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Collaborators",
 			"description": "",
 			"item": []
 		},
 		{
-			"name": "Projects and Builds",
+			"name": "Roles",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Roles",
+					"request": {
+						"url": "https://ci.appveyor.com/api/roles",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role",
+					"request": {
+						"url": "https://ci.appveyor.com/api/roles/<roleId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/team/#get-role"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role",
+					"request": {
+						"url": "https://ci.appveyor.com/api/roles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"My Role\"\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#add-role"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"url": "https://ci.appveyor.com/api/roles",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"roleId\":3040,\r\n   \"name\":\"My Role\",\r\n   \"isSystem\":false,\r\n   \"created\":\"2014-03-18T20:12:08.4749886+00:00\",\r\n   \"groups\":[\r\n      {\r\n         \"name\":\"Projects\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ManageProjects\",\r\n               \"description\":\"Create, delete projects, update project settings\",\r\n               \"allowed\":true\r\n            },\r\n            {\r\n               \"name\":\"UpdateProjectSettings\",\r\n               \"description\":\"Update project settings\",\r\n               \"allowed\":true\r\n            },\r\n            {\r\n               \"name\":\"RunProjectBuild\",\r\n               \"description\":\"Run project builds\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteProjectBuilds\",\r\n               \"description\":\"Delete project builds\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Environments\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ManageEnvironments\",\r\n               \"description\":\"Create, delete projects, update environment settings\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateEnvironmentSettings\",\r\n               \"description\":\"Update environment settings\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeployToEnvironment\",\r\n               \"description\":\"Deploy to environment\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Account\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"UpdateAccountDetails\",\r\n               \"description\":\"Update account details\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Users\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"AddUser\",\r\n               \"description\":\"Add new user\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateUserDetails\",\r\n               \"description\":\"Update user details\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteUser\",\r\n               \"description\":\"Delete user\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Roles\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"AddRole\",\r\n               \"description\":\"Add new role\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateRoleDetails\",\r\n               \"description\":\"Update role details\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteRole\",\r\n               \"description\":\"Delete role\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"User\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ConfigureApiKeys\",\r\n               \"description\":\"Generate API keys\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      }\r\n   ]\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#update-role"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"url": "https://ci.appveyor.com/api/roles/<roleId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"roleId\":134695,\r\n   \"name\":\"My Role\",\r\n   \"isSystem\":false,\r\n   \"created\":\"2014-03-18T20:12:08.4749886+00:00\",\r\n   \"groups\":[\r\n      {\r\n         \"name\":\"Projects\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ManageProjects\",\r\n               \"description\":\"Create, delete projects, update project settings\",\r\n               \"allowed\":true\r\n            },\r\n            {\r\n               \"name\":\"UpdateProjectSettings\",\r\n               \"description\":\"Update project settings\",\r\n               \"allowed\":true\r\n            },\r\n            {\r\n               \"name\":\"RunProjectBuild\",\r\n               \"description\":\"Run project builds\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteProjectBuilds\",\r\n               \"description\":\"Delete project builds\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Environments\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ManageEnvironments\",\r\n               \"description\":\"Create, delete projects, update environment settings\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateEnvironmentSettings\",\r\n               \"description\":\"Update environment settings\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeployToEnvironment\",\r\n               \"description\":\"Deploy to environment\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Account\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"UpdateAccountDetails\",\r\n               \"description\":\"Update account details\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Users\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"AddUser\",\r\n               \"description\":\"Add new user\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateUserDetails\",\r\n               \"description\":\"Update user details\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteUser\",\r\n               \"description\":\"Delete user\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"Roles\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"AddRole\",\r\n               \"description\":\"Add new role\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"UpdateRoleDetails\",\r\n               \"description\":\"Update role details\",\r\n               \"allowed\":false\r\n            },\r\n            {\r\n               \"name\":\"DeleteRole\",\r\n               \"description\":\"Delete role\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"User\",\r\n         \"permissions\":[\r\n            {\r\n               \"name\":\"ConfigureApiKeys\",\r\n               \"description\":\"Generate API keys\",\r\n               \"allowed\":false\r\n            }\r\n         ]\r\n      }\r\n   ]\r\n}"
+						},
+						"description": "https://www.appveyor.com/docs/api/team/#delete-role"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
 			"description": "",
 			"item": [
 				{
@@ -37,6 +259,115 @@
 					"response": []
 				},
 				{
+					"name": "Get Project Last Build",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-last-build"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Last Branch Build",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/branch/{{buildBranch}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-last-branch-build"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Build By Version",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/build/{{buildVersion}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-build-by-version"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project History",
+					"request": {
+						"url": {
+							"raw": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/history?recordsNumber={{recordsPerPage}}",
+							"protocol": "https",
+							"host": [
+								"ci",
+								"appveyor",
+								"com"
+							],
+							"path": [
+								"api",
+								"projects",
+								"{{accountName}}",
+								"{{projectSlug}}",
+								"history"
+							],
+							"query": [
+								{
+									"key": "recordsNumber",
+									"value": "{{recordsPerPage}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-history"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Deployments",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/deployments",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-deployments"
+					},
+					"response": []
+				},
+				{
 					"name": "Get Project Settings",
 					"request": {
 						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/settings",
@@ -53,6 +384,23 @@
 							"raw": ""
 						},
 						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-settings"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Settings in YAML",
+					"request": {
+						"url": "https://ci.appveyor.com/api/projects/{{accountName}}/{{projectSlug}}/settings/yaml",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#get-project-settings/yaml"
 					},
 					"response": []
 				},
@@ -93,6 +441,34 @@
 							"raw": ""
 						},
 						"description": "https://www.appveyor.com/docs/api/projects-builds/#delete-project-build-cache"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Builds",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Build Jobs",
+			"description": "",
+			"item": [
+				{
+					"name": "Download Build Log",
+					"request": {
+						"url": "https://ci.appveyor.com/api/buildjobs/{{jobId}}/log",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authenticationToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "https://www.appveyor.com/docs/api/projects-builds/#download-build-log"
 					},
 					"response": []
 				}
