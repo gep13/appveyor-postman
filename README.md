@@ -2,6 +2,42 @@
 
 This repository contains a [Postman](https://www.getpostman.com/) collection and environment file that can be used to exercise the [AppVeyor API](https://www.appveyor.com/docs/api/).
 
+## Video
+
+A short video explaining what this is, and how to use it can be found here:
+
+[![Introduction to the AppVeyor Postman Collection](https://img.youtube.com/vi/U8mVjJxt_ts/0.jpg)](https://www.youtube.com/watch?v=U8mVjJxt_ts)
+
+## Getting Started by importing from Link
+
+1. Open Postman
+1. Click Import
+1. Click Import From Link
+1. Paste the following Link `https://raw.githubusercontent.com/gep13/appveyor-postman/master/AppVeyor.postman_collection.json`
+1. Click Import
+1. Click the `Environment Options` gear at the top right hand corner of Postman
+1. Click `Manage Environments`
+1. Click `Add`
+1. Add a key for each of the following:
+
+    * _accountName_
+      * The name of the account that hosts the AppVeyor project you want to work with
+    * _projectSlug_
+      * The identifier for the AppVeyor project you want to work with
+    * _authenticationToken_
+      * The API Token of the user that you want to use to access the API.  Log into `ci.appveyor.com` and then select the drop down list at the top right hand corner and click `API Token`.
+    * _recordsPerPage_
+      * The number of records to return in historical queries
+
+1. Click Add
+1. Close the `Manage Environments` window
+1. In the collections list on the left hand side, expand `AppVeyor` then `Projects and Builds`
+1. Double click on `Get Projects` request
+1. In the Environments drop down list at the top right hand corner of Postman, select the Environment that you named earlier
+1. Click send
+1. If everything has worked, you should get a list of projects for the account associated with the API Token that you used
+
+## Getting Started by cloning Repository
 To get started with this collection and test that everything is working, after cloning this repository, follow these steps:
 
 1. Open Postman
